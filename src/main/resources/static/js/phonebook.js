@@ -51,7 +51,8 @@ new Vue({
             var contact = new Contact(this.firstName, this.lastName, this.phone);
             $.ajax({
                 type: "POST",
-                url: "/phonebook/add",
+                url: "/phoneBook/rpc/api/v1/addContact",
+                contentType: "application/json",
                 data: JSON.stringify(contact)
             }).done(function () {
                 self.serverValidation = false;
@@ -71,8 +72,7 @@ new Vue({
         loadData: function () {
             var self = this;
 
-            $.get("/phonebook/get/all").done(function (response) {
-                var contactListFormServer = JSON.parse(response);
+            $.get("/phoneBook/rpc/api/v1/getAllContacts").done(function (contactListFormServer) {
                 self.rows = self.convertContactList(contactListFormServer);
             });
         },
@@ -85,7 +85,7 @@ new Vue({
 
             $.ajax({
                 type: "POST",
-                url: "/phonebook/delete",
+                url: "/phoneBook/rpc/api/v1/deleteContact",
                 data: JSON.stringify(contact),
                 dataType: "json"
             });

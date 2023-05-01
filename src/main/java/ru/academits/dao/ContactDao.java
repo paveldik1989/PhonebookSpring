@@ -1,4 +1,4 @@
-package academits.dao;
+package ru.academits.dao;
 
 import org.springframework.stereotype.Repository;
 import ru.academits.model.Contact;
@@ -31,5 +31,9 @@ public class ContactDao {
 
     public void add(Contact contact) {
         contactList.add(contact);
+    }
+
+    public void delete(Contact contact){
+        contactList.remove(contact);
     }
 }

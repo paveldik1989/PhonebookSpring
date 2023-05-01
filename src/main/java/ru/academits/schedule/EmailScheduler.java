@@ -1,4 +1,4 @@
-package academits.schedule;
+package ru.academits.schedule;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package academits.phonebook;
+package ru.academits.phonebook;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +35,12 @@ public class PhoneBookController {
     @ResponseBody
     public ContactValidation addContact(@RequestBody Contact contact) {
         return contactService.addContact(contact);
+    }
+
+    @RequestMapping(value = "deleteContact", method = RequestMethod.POST)
+    @ResponseBody
+    public ContactValidation deleteContact(@RequestBody Contact contact) {
+        return contactService.removeContact(contact);
     }
 }
 

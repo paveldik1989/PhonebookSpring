@@ -1,5 +1,7 @@
 package ru.academits.model;
 
+import java.util.Objects;
+
 public class Contact {
     private int id;
     private String firstName;
@@ -45,5 +47,21 @@ public class Contact {
 
     public void setImportant(boolean important) {
         this.important = important;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return  firstName.equals(contact.firstName) && lastName.equals(contact.lastName) && phone.equals(contact.phone);
+    }
+
+    //id == contact.id && important == contact.important &&
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, phone, important);
     }
 }

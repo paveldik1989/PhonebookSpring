@@ -55,7 +55,7 @@
                 <td v-text="row.firstName"></td>
                 <td v-text="row.phone"></td>
                 <td>
-                    <button class="btn btn-primary" type="button">Удалить</button>
+                    <button class="btn btn-primary" type="button" v-on:click="deleteContact(row)">Удалить</button>
                 </td>
             </template>
         </tr>
@@ -95,7 +95,7 @@
                 <input type="text" class="form-control input-sm form-input ml-1"
                        v-model="phone"
                        v-bind:class="{ 'input-error': phoneError.error && validation }"/>
-                <span v-show="validation" class="error-message" v-text="phoneError.message"></span>
+                <span v-show="validation" class="error-messge" v-text="phoneError.message"></span>
             </label>
         </div>
         <button type="button" class="btn btn-primary" v-on:click="addContact">Добавить</button>

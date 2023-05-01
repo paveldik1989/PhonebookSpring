@@ -1,4 +1,4 @@
-package academits.service;
+package ru.academits.service;
 
 import org.springframework.stereotype.Service;
 import ru.academits.dao.ContactDao;
@@ -65,4 +65,27 @@ public class ContactService {
     public List<Contact> getAllContacts() {
         return contactDao.getAllContacts();
     }
+
+
+    public ContactValidation removeContact(Contact contact) {
+        ContactValidation contactValidation = validateRemoving(contact);
+
+        contactDao.delete(contact);
+        return contactValidation;
+    }
+
+    public ContactValidation validateRemoving(Contact contact){
+        ContactValidation contactValidation = new ContactValidation();
+        contactValidation.setValid(true);
+
+        List<Contact> contactList = contactDao.getAllContacts();
+
+        if(!contactList.contains(contact)){
+            contactValidation.setValid(false);
+            contactValidation.setError("No such contact to delete");
+        }
+
+        return contactValidation;
+    }
+
 }

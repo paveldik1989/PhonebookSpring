@@ -1,4 +1,4 @@
-package academits.model;
+package ru.academits.model;
 
 public class ErrorInfo {
     private String message;
