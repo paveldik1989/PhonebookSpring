@@ -86,6 +86,7 @@ new Vue({
             $.ajax({
                 type: "POST",
                 url: "/phoneBook/rpc/api/v1/deleteContact",
+                contentType: "application/json",
                 data: JSON.stringify(contact),
                 dataType: "json"
             });
